@@ -68,14 +68,14 @@ Modern Roblox interfaces often display many visual items at once.
 
 Use:
 
-* Compact cards
-* Tight but intentional spacing
-* Strong image prominence
-* Clear category navigation
-* Short labels
-* Subtle separators
-* Horizontal category bars
-* Dense grids
+- Compact cards
+- Tight but intentional spacing
+- Strong image prominence
+- Clear category navigation
+- Short labels
+- Subtle separators
+- Horizontal category bars
+- Dense grids
 
 Do not make every component enormous.
 
@@ -91,11 +91,11 @@ This is extremely important.
 
 Do NOT make:
 
-* giant pill-shaped cards
-* excessive rounded rectangles
-* every button a pill
-* every container heavily rounded
-* floating glassmorphism panels everywhere
+- giant pill-shaped cards
+- excessive rounded rectangles
+- every button a pill
+- every container heavily rounded
+- floating glassmorphism panels everywhere
 
 Use corner radii selectively.
 
@@ -119,21 +119,21 @@ Do not make everything pure black.
 
 Suggested hierarchy:
 
-* Main background: very dark neutral
-* Secondary surfaces: slightly lighter
-* Cards: distinct but restrained
-* Borders: subtle
-* Text: high contrast
-* Secondary text: muted
-* Accent: restrained and purposeful
+- Main background: very dark neutral
+- Secondary surfaces: slightly lighter
+- Cards: distinct but restrained
+- Borders: subtle
+- Text: high contrast
+- Secondary text: muted
+- Accent: restrained and purposeful
 
 Do not use:
 
-* neon purple gradients
-* rainbow gradients
-* excessive blue glow
-* giant colored backgrounds
-* "AI startup" gradient aesthetics
+- neon purple gradients
+- rainbow gradients
+- excessive blue glow
+- giant colored backgrounds
+- "AI startup" gradient aesthetics
 
 The interface should primarily derive its character from **layout, typography, imagery, and spacing**, not flashy colors.
 
@@ -147,11 +147,11 @@ Use a strong sans-serif.
 
 Prioritize:
 
-* readable item names
-* compact metadata
-* clear hierarchy
-* strong headings
-* restrained font sizes
+- readable item names
+- compact metadata
+- clear hierarchy
+- strong headings
+- restrained font sizes
 
 Do not make every heading gigantic.
 
@@ -171,18 +171,18 @@ Left:
 
 Center / primary navigation:
 
-* Explore
-* Search
+- Explore
+- Search
 
 Optional:
 
-* About
-* GitHub
+- About
+- GitHub
 
 Right:
 
-* Search
-* Theme/settings if eventually needed
+- Search
+- Theme/settings if eventually needed
 
 Keep navigation visually quiet.
 
@@ -230,11 +230,11 @@ Input:
 
 Support:
 
-* Enter to search
-* Search button
-* Loading state
-* Clear button
-* Error state
+- Enter to search
+- Search button
+- Loading state
+- Clear button
+- Error state
 
 The search bar should be reusable throughout the application.
 
@@ -281,14 +281,14 @@ The avatar area should feel similar in importance to the Avatar Editor's charact
 Potential layout:
 
 ┌──────────────────────┬───────────────────────────────────┐
-│                      │                                   │
-│                      │  username                         │
-│      AVATAR          │  Display Name                     │
-│                      │                                   │
-│                      │  Current Avatar                   │
-│                      │                                   │
-│                      │  [Outfits] [Items] [Overview]     │
-│                      │                                   │
+│ │ │
+│ │ username │
+│ AVATAR │ Display Name │
+│ │ │
+│ │ Current Avatar │
+│ │ │
+│ │ [Outfits] [Items] [Overview] │
+│ │ │
 └──────────────────────┴───────────────────────────────────┘
 
 The exact layout can change if a better composition is found.
@@ -329,12 +329,12 @@ Each outfit card should prioritize:
 Example:
 
 ┌──────────────┐
-│              │
-│   AVATAR     │
-│              │
+│ │
+│ AVATAR │
+│ │
 ├──────────────┤
-│ Outfit Name  │
-│ 7 items      │
+│ Outfit Name │
+│ 7 items │
 └──────────────┘
 
 Cards should not contain excessive text.
@@ -427,11 +427,11 @@ Item cards should visually resemble Roblox Marketplace item cards more than gene
 
 Show:
 
-* Thumbnail
-* Item name
-* Item type
-* Optional creator
-* Asset ID if useful
+- Thumbnail
+- Item name
+- Item type
+- Optional creator
+- Asset ID if useful
 
 Keep metadata compact.
 
@@ -445,11 +445,11 @@ Clicking an item should open a clean item detail panel/modal.
 
 Show:
 
-* Large thumbnail
-* Item name
-* Type
-* Asset ID
-* Creator if available
+- Large thumbnail
+- Item name
+- Type
+- Asset ID
+- Creator if available
 
 Actions:
 
@@ -473,10 +473,10 @@ Desktop item/outfit cards should have subtle interaction.
 
 On hover:
 
-* Slight elevation
-* Slight image scale
-* Border/highlight change
-* Action appears if appropriate
+- Slight elevation
+- Slight image scale
+- Border/highlight change
+- Action appears if appropriate
 
 Keep it fast.
 
@@ -506,10 +506,10 @@ Use a consistent modern icon library.
 
 Icons should be:
 
-* Simple
-* Compact
-* Consistent in stroke weight
-* Similar to modern Roblox application UI
+- Simple
+- Compact
+- Consistent in stroke weight
+- Similar to modern Roblox application UI
 
 Do not randomly mix icon styles.
 
@@ -523,10 +523,10 @@ This needs to look polished.
 
 Use skeleton loading for:
 
-* Player information
-* Avatar
-* Outfit cards
-* Item cards
+- Player information
+- Avatar
+- Outfit cards
+- Item cards
 
 The skeleton should match the actual content layout.
 
@@ -650,10 +650,10 @@ Mock data is acceptable while constructing the interface.
 
 However:
 
-* Keep mock services separate.
-* Clearly identify mock data.
-* Do not hard-code fake Roblox users throughout components.
-* Do not make the final application dependent on mock data.
+- Keep mock services separate.
+- Clearly identify mock data.
+- Do not hard-code fake Roblox users throughout components.
+- Do not make the final application dependent on mock data.
 
 The UI should be designed around realistic Roblox data structures.
 
@@ -689,11 +689,11 @@ Do not simply shrink the desktop interface.
 
 On mobile:
 
-* Navigation becomes compact
-* Avatar preview becomes stacked
-* Outfit grids become smaller
-* Item details become full-screen panels
-* Search remains accessible
+- Navigation becomes compact
+- Avatar preview becomes stacked
+- Outfit grids become smaller
+- Item details become full-screen panels
+- Search remains accessible
 
 Maintain the same visual identity.
 
@@ -703,13 +703,13 @@ Maintain the same visual identity.
 
 Use:
 
-* Semantic HTML
-* Keyboard navigation
-* Proper focus states
-* Accessible dialogs
-* Meaningful alt text
-* Proper button labels
-* Good contrast
+- Semantic HTML
+- Keyboard navigation
+- Proper focus states
+- Accessible dialogs
+- Meaningful alt text
+- Proper button labels
+- Good contrast
 
 Do not sacrifice usability for aesthetics.
 
@@ -721,13 +721,13 @@ The application should feel fast.
 
 Use:
 
-* Lazy-loaded images
-* Progressive loading
-* Cached requests where appropriate
-* Debounced username search
-* Efficient state management
-* Avoid unnecessary API calls
-* Avoid unnecessary React re-renders
+- Lazy-loaded images
+- Progressive loading
+- Cached requests where appropriate
+- Debounced username search
+- Efficient state management
+- Avoid unnecessary API calls
+- Avoid unnecessary React re-renders
 
 Do not fetch every possible piece of data immediately.
 
@@ -739,21 +739,21 @@ Fetch what the current page needs.
 
 Do not implement these immediately, but structure the application so they can eventually exist:
 
-* Recently viewed users
-* Saved users
-* Saved outfits
-* Outfit comparison
-* Outfit sharing
-* Outfit history
-* Search history
-* Item filtering
-* Creator information
-* Catalog price information
-* R6/R15 information
-* Avatar rotation
-* Multiple avatar angles
-* Community discovery
-* Public collections
+- Recently viewed users
+- Saved users
+- Saved outfits
+- Outfit comparison
+- Outfit sharing
+- Outfit history
+- Search history
+- Item filtering
+- Creator information
+- Catalog price information
+- R6/R15 information
+- Avatar rotation
+- Multiple avatar angles
+- Community discovery
+- Public collections
 
 The MVP should remain focused.
 
@@ -790,16 +790,16 @@ Instead ask:
 
 ### Does the interface have the same general qualities?
 
-* Dense visual browsing
-* Strong avatar/item imagery
-* Compact navigation
-* Clear categories
-* Dark neutral surfaces
-* Restrained borders
-* Practical controls
-* Strong typography
-* Minimal unnecessary decoration
-* Lots of useful content visible at once
+- Dense visual browsing
+- Strong avatar/item imagery
+- Compact navigation
+- Clear categories
+- Dark neutral surfaces
+- Restrained borders
+- Practical controls
+- Strong typography
+- Minimal unnecessary decoration
+- Lots of useful content visible at once
 
 If the answer is no, redesign the layout.
 
@@ -809,18 +809,18 @@ If the answer is no, redesign the layout.
 
 Do not turn the application into:
 
-* A generic SaaS dashboard
-* A giant landing page
-* A "futuristic AI" website
-* A neon gaming website
-* An excessive glassmorphism design
-* An ecommerce clone
-* A giant card with everything inside it
-* A page where every element is heavily rounded
-* A page full of unnecessary gradients
-* A page with huge empty spaces
-* A fake Roblox UI replica
-* A Roblox logo clone
+- A generic SaaS dashboard
+- A giant landing page
+- A "futuristic AI" website
+- A neon gaming website
+- An excessive glassmorphism design
+- An ecommerce clone
+- A giant card with everything inside it
+- A page where every element is heavily rounded
+- A page full of unnecessary gradients
+- A page with huge empty spaces
+- A fake Roblox UI replica
+- A Roblox logo clone
 
 The goal is an **original application with the design sensibility of modern Roblox products**.
 
