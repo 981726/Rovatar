@@ -20,12 +20,12 @@ export function ThemePicker() {
 
   const selectTheme = (value: Theme) => {
     setTheme(value);
-    document.documentElement.dataset.rovatarTheme = value;
+    document.documentElement.dataset["rovatarTheme"] = value;
     window.localStorage.setItem("rovatar-theme", value);
   };
 
   useEffect(() => {
-    document.documentElement.dataset.rovatarTheme = theme;
+    document.documentElement.dataset["rovatarTheme"] = theme;
   }, [theme]);
 
   return (
