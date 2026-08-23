@@ -1,10 +1,13 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { ArrowRightIcon, SearchIcon, XIcon } from "lucide-react";
+import { ArrowRightIcon, CheckIcon, LoaderCircleIcon, SearchIcon, XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { checkUsername } from "@/lib/roblox.functions";
 
 const USERNAME_RE = /^[A-Za-z0-9_]{3,20}$/;
+
+type CheckState = "idle" | "checking" | "found" | "not-found";
 
 export function UsernameSearch({
   size = "md",
@@ -20,7 +23,33 @@ export function UsernameSearch({
 }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [checkState, setCheckState] = useState<CheckState>("idle");
   const navigate = useNavigate();
+  const checkTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const checkToken = useRef(0);
+
+  // Live "does this player exist" feedback, debounced so it only fires once
+  // typing pauses rather than on every keystroke.
+  useEffect(() => {
+    clearTimeout(checkTimer.current);
+    const username = value.trim();
+    if (!USERNAME_RE.test(username)) {
+      setCheckState("idle");
+      return;
+    }
+    const token = ++checkToken.current;
+    setCheckState("checking");
+    checkTimer.current = setTimeout(async () => {
+      try {
+        const result = await checkUsername({ data: { username } });
+        if (checkToken.current !== token) return; // a newer check superseded this one
+        setCheckState(result.exists ? "found" : "not-found");
+      } catch {
+        if (checkToken.current === token) setCheckState("idle");
+      }
+    }, 400);
+    return () => clearTimeout(checkTimer.current);
+  }, [value]);
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -74,11 +103,31 @@ export function UsernameSearch({
               large ? "h-11 text-base" : "h-8 text-sm",
             )}
           />
+          {checkState === "checking" && (
+            <LoaderCircleIcon
+              className="size-3.5 shrink-0 animate-spin text-muted-foreground"
+              aria-hidden
+            />
+          )}
+          {checkState === "found" && (
+            <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold text-emerald-500">
+              <CheckIcon className="size-3.5" aria-hidden />
+              Found
+            </span>
+          )}
+          {checkState === "not-found" && (
+            <span className="shrink-0 text-[11px] font-semibold text-muted-foreground">
+              No player
+            </span>
+          )}
           {value && (
             <button
               type="button"
               aria-label="Clear search"
-              onClick={() => setValue("")}
+              onClick={() => {
+                setValue("");
+                setCheckState("idle");
+              }}
               className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             >
               <XIcon className="size-4" />
