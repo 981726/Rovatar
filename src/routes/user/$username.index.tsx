@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import {
-  ArrowRightIcon,
-  CalendarIcon,
-  PersonStandingIcon,
-  ShirtIcon,
-} from "lucide-react";
+import { ArrowRightIcon, CalendarIcon, PersonStandingIcon, ShirtIcon } from "lucide-react";
 
 import { AssetSections } from "../../components/asset-sections";
 import { CopyOutfitLayout } from "../../components/copy-outfit-layout";
@@ -128,8 +123,7 @@ function OverviewPage() {
             <h2 className="text-eyebrow">About</h2>
             {joined && (
               <p className="mt-2 text-sm text-muted-foreground">
-                Joined Roblox in{" "}
-                <span className="font-semibold text-foreground">{joined}</span>
+                Joined Roblox in <span className="font-semibold text-foreground">{joined}</span>
               </p>
             )}
             <p className="mt-2 line-clamp-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
@@ -146,10 +140,7 @@ function OverviewPage() {
               Browse {outfits.length} outfits
               <ArrowRightIcon className="size-4" aria-hidden />
             </Link>
-            <CopyOutfitLayout
-              label={`@${user.name}'s current avatar`}
-              assets={avatar.assets}
-            />
+            <CopyOutfitLayout label={`@${user.name}'s current avatar`} assets={avatar.assets} />
           </div>
         </div>
       </div>

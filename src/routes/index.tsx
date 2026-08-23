@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ClockIcon,
-  CopyIcon,
-  LayersIcon,
-  SearchIcon,
-  ShirtIcon,
-  SparklesIcon,
-} from "lucide-react";
+import { ClockIcon, CopyIcon, LayersIcon, SearchIcon, ShirtIcon, SparklesIcon } from "lucide-react";
 
 import { UsernameSearch } from "../components/username-search";
 import { readRecentUsers, type RecentUser } from "../lib/recent";
@@ -75,8 +68,8 @@ function Index() {
             </h1>
 
             <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground">
-              Search a player to see exactly what they&apos;re wearing, browse every
-              saved outfit, and copy the asset IDs you need.
+              Search a player to see exactly what they&apos;re wearing, browse every saved outfit,
+              and copy the asset IDs you need.
             </p>
 
             <div className="mx-auto mt-9 max-w-xl">
@@ -102,10 +95,7 @@ function Index() {
       <section className="mx-auto w-full max-w-7xl px-4 py-14">
         <div className="grid gap-3 sm:grid-cols-3">
           {STEPS.map((step, i) => (
-            <article
-              key={step.title}
-              className="rounded-xl border bg-card p-5 elevated"
-            >
+            <article key={step.title} className="rounded-xl border bg-card p-5 elevated">
               <div className="flex items-center justify-between">
                 <span className="grid size-9 place-items-center rounded-lg bg-brand/12 text-brand">
                   <step.icon className="size-4.5" aria-hidden />
@@ -115,9 +105,7 @@ function Index() {
                 </span>
               </div>
               <h2 className="mt-4 text-[15px] font-bold">{step.title}</h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                {step.body}
-              </p>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
             </article>
           ))}
         </div>
@@ -139,8 +127,7 @@ function Index() {
                   params={{ username: user.name }}
                   className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-brand/50 hover:text-foreground"
                 >
-                  <LayersIcon className="size-3.5 text-brand" aria-hidden />
-                  @{user.name}
+                  <LayersIcon className="size-3.5 text-brand" aria-hidden />@{user.name}
                 </Link>
               ))}
             </div>

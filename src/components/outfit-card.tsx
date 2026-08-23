@@ -3,13 +3,7 @@ import { ArrowUpRightIcon, ImageOffIcon } from "lucide-react";
 
 import type { RobloxOutfit } from "@/lib/roblox.types";
 
-export function OutfitCard({
-  outfit,
-  username,
-}: {
-  outfit: RobloxOutfit;
-  username: string;
-}) {
+export function OutfitCard({ outfit, username }: { outfit: RobloxOutfit; username: string }) {
   return (
     <Link
       to="/user/$username/outfit/$outfitId"

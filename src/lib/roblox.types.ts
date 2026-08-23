@@ -74,13 +74,7 @@ export interface ItemDetail {
 /* Asset categorization (Roblox Avatar Editor style groupings)         */
 /* ------------------------------------------------------------------ */
 
-export const ASSET_GROUP_ORDER = [
-  "clothing",
-  "accessories",
-  "body",
-  "animation",
-  "other",
-] as const;
+export const ASSET_GROUP_ORDER = ["clothing", "accessories", "body", "animation", "other"] as const;
 
 export type AssetGroupKey = (typeof ASSET_GROUP_ORDER)[number];
 
@@ -117,9 +111,7 @@ export interface AssetGroup<T> {
 }
 
 /** Group avatar assets into non-empty, Roblox-editor-style categories. */
-export function groupAssets<T extends { assetType: { id: number } }>(
-  assets: T[],
-): AssetGroup<T>[] {
+export function groupAssets<T extends { assetType: { id: number } }>(assets: T[]): AssetGroup<T>[] {
   const buckets = new Map<AssetGroupKey, T[]>();
   for (const asset of assets) {
     const key = assetGroupOf(asset.assetType.id);
@@ -132,10 +124,7 @@ export function groupAssets<T extends { assetType: { id: number } }>(
     const items = buckets
       .get(key)!
       .slice()
-      .sort(
-        (a, b) =>
-          order.indexOf(a.assetType.id) - order.indexOf(b.assetType.id),
-      );
+      .sort((a, b) => order.indexOf(a.assetType.id) - order.indexOf(b.assetType.id));
     return { key, label: ASSET_GROUP_LABELS[key], items };
   });
 }

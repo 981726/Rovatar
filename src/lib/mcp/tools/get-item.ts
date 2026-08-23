@@ -45,9 +45,7 @@ export default defineTool({
     };
 
     return {
-      content: [
-        { type: "text", text: `${item.name} (asset ${assetId}) — ${item.catalogUrl}` },
-      ],
+      content: [{ type: "text", text: `${item.name} (asset ${assetId}) — ${item.catalogUrl}` }],
       structuredContent: { item },
     };
   },

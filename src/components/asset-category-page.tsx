@@ -34,9 +34,7 @@ export function AssetCategoryPage({ groupKey }: { groupKey: AssetGroupKey }) {
   }
 
   const label = ASSET_GROUP_LABELS[groupKey];
-  const assets = data.avatar.assets.filter(
-    (a) => assetGroupOf(a.assetType.id) === groupKey,
-  );
+  const assets = data.avatar.assets.filter((a) => assetGroupOf(a.assetType.id) === groupKey);
 
   return (
     <div>

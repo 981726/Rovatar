@@ -26,9 +26,8 @@ async function fetchJson<T>(
   // Roblox rate-limits aggressively per IP; back off and retry on 429.
   if (res.status === 429 && attempt < maxRetries) {
     const retryAfter = Number(res.headers.get("retry-after"));
-    const wait = Number.isFinite(retryAfter) && retryAfter > 0
-      ? retryAfter * 1000
-      : 900 * 2 ** attempt;
+    const wait =
+      Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : 900 * 2 ** attempt;
     await sleep(Math.min(wait, 8000));
     return fetchJson(url, init, attempt + 1, maxRetries);
   }
@@ -47,9 +46,7 @@ export interface ResolvedUsername {
   hasVerifiedBadge: boolean;
 }
 
-export async function resolveUsername(
-  username: string,
-): Promise<ResolvedUsername | null> {
+export async function resolveUsername(username: string): Promise<ResolvedUsername | null> {
   const data = await fetchJson<{
     data?: Array<{
       id: number;
@@ -76,9 +73,7 @@ export interface UserProfileResponse {
 }
 
 export function fetchUserProfile(userId: number) {
-  return fetchJson<UserProfileResponse>(
-    `https://users.roblox.com/v1/users/${userId}`,
-  );
+  return fetchJson<UserProfileResponse>(`https://users.roblox.com/v1/users/${userId}`);
 }
 
 /* ------------------------------ avatar ----------------------------- */
@@ -119,9 +114,7 @@ export async function fetchAvatar(userId: number): Promise<AvatarResponse> {
     );
   } catch (err) {
     if (!(err instanceof Error && err.message.includes("(429)"))) throw err;
-    data = await fetchJson<AvatarResponse>(
-      `https://avatar.roproxy.com/v1/users/${userId}/avatar`,
-    );
+    data = await fetchJson<AvatarResponse>(`https://avatar.roproxy.com/v1/users/${userId}/avatar`);
   }
   avatarCache.set(userId, { at: Date.now(), data });
   return data;
@@ -133,14 +126,10 @@ export interface OutfitSummaryResponse {
   isEditable: boolean;
 }
 
-export async function fetchOutfits(
-  userId: number,
-): Promise<OutfitSummaryResponse[]> {
+export async function fetchOutfits(userId: number): Promise<OutfitSummaryResponse[]> {
   const data = await fetchJson<{
     data?: Array<{ id: number; name: string; isEditable: boolean }>;
-  }>(
-    `https://avatar.roblox.com/v1/users/${userId}/outfits?page=1&itemsPerPage=50`,
-  );
+  }>(`https://avatar.roblox.com/v1/users/${userId}/outfits?page=1&itemsPerPage=50`);
   return (data.data ?? []).map((o) => ({
     id: o.id,
     name: o.name,
@@ -212,7 +201,5 @@ export interface AssetDetailsResponse {
 }
 
 export function fetchAssetDetails(assetId: number) {
-  return fetchJson<AssetDetailsResponse>(
-    `https://economy.roblox.com/v2/assets/${assetId}/details`,
-  );
+  return fetchJson<AssetDetailsResponse>(`https://economy.roblox.com/v2/assets/${assetId}/details`);
 }

@@ -53,15 +53,23 @@ export function AppFooter() {
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Explore</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            Explore
+          </h2>
           <nav className="mt-3 flex flex-col items-start gap-2 text-sm">
-            <Link to="/" className="hover:text-brand">Player search</Link>
-            <Link to="/" className="hover:text-brand">Avatar lookup</Link>
+            <Link to="/" className="hover:text-brand">
+              Player search
+            </Link>
+            <Link to="/" className="hover:text-brand">
+              Avatar lookup
+            </Link>
           </nav>
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Community</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            Community
+          </h2>
           <a
             href={`discord://-/users/${DISCORD_USER_ID}`}
             className="mt-3 inline-flex items-center gap-1.5 text-sm hover:text-brand"
@@ -72,7 +80,9 @@ export function AppFooter() {
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Legal</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            Legal
+          </h2>
           <p className="mt-3 text-sm text-muted-foreground">Public Roblox data only.</p>
           <p className="mt-2 text-sm text-muted-foreground">Do Not Sell My Personal Information</p>
         </div>

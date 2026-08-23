@@ -4,12 +4,7 @@ import { CheckIcon, CopyIcon, ExternalLinkIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { itemDetailOptions } from "@/lib/queries";
 import type { RobloxAvatarAsset } from "@/lib/roblox.types";
 

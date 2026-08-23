@@ -23,8 +23,7 @@ export function CategoryTabs({ username }: { username: string }) {
           activeOptions={{ exact: tab.exact }}
           className="shrink-0 rounded-lg px-3.5 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary/70 hover:text-foreground"
           activeProps={{
-            className:
-              "bg-brand text-brand-foreground hover:bg-brand hover:text-brand-foreground",
+            className: "bg-brand text-brand-foreground hover:bg-brand hover:text-brand-foreground",
           }}
         >
           {tab.label}

@@ -15,12 +15,7 @@ import {
   fetchUserProfile,
   resolveUsername,
 } from "./roblox.server";
-import type {
-  ItemDetail,
-  OutfitDetail,
-  RobloxOutfit,
-  UserOverview,
-} from "./roblox.types";
+import type { ItemDetail, OutfitDetail, RobloxOutfit, UserOverview } from "./roblox.types";
 
 const USERNAME_RE = /^[A-Za-z0-9_]{3,20}$/;
 
@@ -124,8 +119,7 @@ export const getOutfitDetail = createServerFn({ method: "GET" })
       fetchOutfitDetails(data.outfitId),
       fetchOutfits(base.id).catch(() => [] as RobloxOutfit[]),
     ]);
-    const name =
-      outfitList.find((o) => o.id === data.outfitId)?.name ?? "Outfit";
+    const name = outfitList.find((o) => o.id === data.outfitId)?.name ?? "Outfit";
 
     const assets = details.assets ?? [];
     const thumbs = await fetchThumbnails([

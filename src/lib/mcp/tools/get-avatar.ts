@@ -1,11 +1,7 @@
 import { defineTool, ToolError } from "@lovable.dev/mcp-js";
 import { z } from "zod";
 
-import {
-  fetchAvatar,
-  fetchThumbnails,
-  resolveUsername,
-} from "../../roblox.server";
+import { fetchAvatar, fetchThumbnails, resolveUsername } from "../../roblox.server";
 import { groupAssets } from "../../roblox.types";
 import { assetGroupShape } from "../schemas";
 

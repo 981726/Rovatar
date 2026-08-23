@@ -18,9 +18,7 @@ export function AppNav() {
         >
           <span className="relative grid size-8 place-items-center overflow-hidden rounded-lg bg-brand text-brand-foreground elevated">
             <span aria-hidden className="absolute inset-0 bg-studs opacity-60" />
-            <span className="relative font-mono text-[13px] font-semibold leading-none">
-              R
-            </span>
+            <span className="relative font-mono text-[13px] font-semibold leading-none">R</span>
           </span>
           <span className="text-[15px] font-bold tracking-tight">Rovatar</span>
         </Link>
@@ -56,21 +54,13 @@ export function AppNav() {
           onClick={() => setMobileSearchOpen((v) => !v)}
           className="ml-auto rounded-lg border border-border bg-secondary p-2 text-muted-foreground transition-colors hover:text-foreground sm:hidden"
         >
-          {mobileSearchOpen ? (
-            <XIcon className="size-4.5" />
-          ) : (
-            <SearchIcon className="size-4.5" />
-          )}
+          {mobileSearchOpen ? <XIcon className="size-4.5" /> : <SearchIcon className="size-4.5" />}
         </button>
       </div>
 
       {mobileSearchOpen && (
         <div className="border-t px-4 py-3 sm:hidden">
-          <UsernameSearch
-            size="md"
-            autoFocus
-            onNavigate={() => setMobileSearchOpen(false)}
-          />
+          <UsernameSearch size="md" autoFocus onNavigate={() => setMobileSearchOpen(false)} />
         </div>
       )}
     </header>

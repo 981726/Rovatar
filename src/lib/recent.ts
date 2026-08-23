@@ -29,9 +29,7 @@ export function rememberUser(user: RecentUser) {
   try {
     const next = [
       { name: user.name, displayName: user.displayName },
-      ...readRecentUsers().filter(
-        (u) => u.name.toLowerCase() !== user.name.toLowerCase(),
-      ),
+      ...readRecentUsers().filter((u) => u.name.toLowerCase() !== user.name.toLowerCase()),
     ].slice(0, MAX);
     window.localStorage.setItem(KEY, JSON.stringify(next));
   } catch {

@@ -16,9 +16,7 @@ import { itemDetailOptions } from "../../lib/queries";
 
 export const Route = createFileRoute("/item/$assetId")({
   loader: ({ context, params }) =>
-    context.queryClient.ensureQueryData(
-      itemDetailOptions(Number(params.assetId)),
-    ),
+    context.queryClient.ensureQueryData(itemDetailOptions(Number(params.assetId))),
   head: ({ loaderData, params }) => ({
     meta: loaderData
       ? [
@@ -33,10 +31,7 @@ export const Route = createFileRoute("/item/$assetId")({
             content: `${loaderData.name} (asset ${params.assetId}) on Roblox — previewed via Rovatar.`,
           },
         ]
-      : [
-          { title: "Item unavailable — Rovatar" },
-          { name: "robots", content: "noindex" },
-        ],
+      : [{ title: "Item unavailable — Rovatar" }, { name: "robots", content: "noindex" }],
   }),
   component: ItemPage,
   notFoundComponent: ItemNotFound,
@@ -98,11 +93,7 @@ function ItemPage() {
         <div className="self-start overflow-hidden rounded-lg border bg-card">
           <div className="aspect-square bg-secondary">
             {item.thumbnailUrl ? (
-              <img
-                src={item.thumbnailUrl}
-                alt={item.name}
-                className="h-full w-full object-cover"
-              />
+              <img src={item.thumbnailUrl} alt={item.name} className="h-full w-full object-cover" />
             ) : (
               <div className="grid h-full w-full place-items-center text-muted-foreground">
                 <ImageOffIcon className="size-6" aria-hidden />

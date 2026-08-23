@@ -23,9 +23,7 @@ export function PageHeader({
             </span>
           )}
         </div>
-        {subtitle && (
-          <p className="mt-1 truncate text-sm text-muted-foreground">{subtitle}</p>
-        )}
+        {subtitle && <p className="mt-1 truncate text-sm text-muted-foreground">{subtitle}</p>}
       </div>
       {action}
     </div>

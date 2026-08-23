@@ -39,9 +39,7 @@ function OutfitError() {
 
 function OutfitDetailPage() {
   const { username, outfitId } = Route.useParams();
-  const { data } = useSuspenseQuery(
-    outfitDetailOptions(username, Number(outfitId)),
-  );
+  const { data } = useSuspenseQuery(outfitDetailOptions(username, Number(outfitId)));
   const [selected, setSelected] = useState<RobloxAvatarAsset | null>(null);
 
   return (

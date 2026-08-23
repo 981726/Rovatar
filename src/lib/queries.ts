@@ -24,13 +24,7 @@ export const userOutfitsOptions = (username: string) =>
 
 export const outfitDetailOptions = (username: string, outfitId: number) =>
   queryOptions({
-    queryKey: [
-      "roblox",
-      "user",
-      username.trim().toLowerCase(),
-      "outfit",
-      outfitId,
-    ],
+    queryKey: ["roblox", "user", username.trim().toLowerCase(), "outfit", outfitId],
     queryFn: () => getOutfitDetail({ data: { username, outfitId } }),
     staleTime: 60_000,
     retry: 1,

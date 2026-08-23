@@ -1,11 +1,7 @@
 import { defineTool, ToolError } from "@lovable.dev/mcp-js";
 import { z } from "zod";
 
-import {
-  fetchOutfits,
-  fetchThumbnails,
-  resolveUsername,
-} from "../../roblox.server";
+import { fetchOutfits, fetchThumbnails, resolveUsername } from "../../roblox.server";
 import { outfitSummaryShape } from "../schemas";
 
 export default defineTool({
