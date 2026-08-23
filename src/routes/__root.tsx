@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 import { AppFooter } from "../components/app-footer";
@@ -140,6 +141,7 @@ function RootComponent() {
         </main>
         <AppFooter />
         <Toaster />
+        <SpeedInsights />
       </div>
     </QueryClientProvider>
   );
