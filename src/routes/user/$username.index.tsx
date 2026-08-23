@@ -4,6 +4,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRightIcon, CalendarIcon, PersonStandingIcon, ShirtIcon } from "lucide-react";
 
 import { AssetSections } from "../../components/asset-sections";
+import { AvatarViewerCard } from "../../components/avatar-viewer-card";
 import { CopyOutfitLayout } from "../../components/copy-outfit-layout";
 import { ItemDialog } from "../../components/item-dialog";
 import { LoadErrorState } from "../../components/states";
@@ -81,28 +82,11 @@ function OverviewPage() {
   return (
     <div className="space-y-10">
       <div className="grid gap-5 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)]">
-        <div className="overflow-hidden rounded-2xl border bg-card elevated">
-          <div className="relative aspect-square bg-plate">
-            <div aria-hidden className="absolute inset-0 bg-studs opacity-50" />
-            {avatarThumbnailUrl ? (
-              <img
-                src={avatarThumbnailUrl}
-                alt={`${user.name}'s current Roblox avatar`}
-                className="relative h-full w-full object-cover"
-              />
-            ) : (
-              <div className="grid h-full w-full place-items-center text-sm text-muted-foreground">
-                Avatar preview unavailable
-              </div>
-            )}
-          </div>
-          <div className="flex items-center justify-between gap-2 border-t border-border/60 p-3">
-            <span className="text-eyebrow">Current avatar</span>
-            <span className="truncate rounded-md border border-border bg-secondary px-2 py-0.5 text-[11px] font-semibold">
-              {avatar.playerAvatarType}
-            </span>
-          </div>
-        </div>
+        <AvatarViewerCard
+          username={user.name}
+          avatarThumbnailUrl={avatarThumbnailUrl}
+          playerAvatarType={avatar.playerAvatarType}
+        />
 
         <div className="flex min-w-0 flex-col">
           <dl className="grid grid-cols-1 gap-3 sm:grid-cols-3">
