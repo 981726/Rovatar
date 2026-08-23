@@ -31,9 +31,7 @@
               "description": "Roblox username to look up."
             }
           },
-          "required": [
-            "username"
-          ],
+          "required": ["username"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
@@ -84,9 +82,7 @@
               "additionalProperties": false
             }
           },
-          "required": [
-            "found"
-          ],
+          "required": ["found"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         }
@@ -110,9 +106,7 @@
               "description": "Roblox username."
             }
           },
-          "required": [
-            "username"
-          ],
+          "required": ["username"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
@@ -126,10 +120,7 @@
               "type": "string"
             },
             "avatarThumbnailUrl": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "itemCount": {
               "type": "number"
@@ -163,48 +154,27 @@
                               "type": "string"
                             }
                           },
-                          "required": [
-                            "id",
-                            "name"
-                          ],
+                          "required": ["id", "name"],
                           "additionalProperties": false
                         },
                         "thumbnailUrl": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
+                          "type": ["string", "null"]
                         },
                         "catalogUrl": {
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "id",
-                        "name",
-                        "assetType",
-                        "thumbnailUrl",
-                        "catalogUrl"
-                      ],
+                      "required": ["id", "name", "assetType", "thumbnailUrl", "catalogUrl"],
                       "additionalProperties": false
                     }
                   }
                 },
-                "required": [
-                  "category",
-                  "items"
-                ],
+                "required": ["category", "items"],
                 "additionalProperties": false
               }
             }
           },
-          "required": [
-            "username",
-            "playerAvatarType",
-            "avatarThumbnailUrl",
-            "itemCount",
-            "groups"
-          ],
+          "required": ["username", "playerAvatarType", "avatarThumbnailUrl", "itemCount", "groups"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         }
@@ -228,9 +198,7 @@
               "description": "Roblox username."
             }
           },
-          "required": [
-            "username"
-          ],
+          "required": ["username"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
@@ -252,25 +220,15 @@
                     "type": "string"
                   },
                   "thumbnailUrl": {
-                    "type": [
-                      "string",
-                      "null"
-                    ]
+                    "type": ["string", "null"]
                   }
                 },
-                "required": [
-                  "id",
-                  "name",
-                  "thumbnailUrl"
-                ],
+                "required": ["id", "name", "thumbnailUrl"],
                 "additionalProperties": false
               }
             }
           },
-          "required": [
-            "username",
-            "outfits"
-          ],
+          "required": ["username", "outfits"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         }
@@ -299,10 +257,7 @@
               "description": "Outfit ID from get_outfits."
             }
           },
-          "required": [
-            "username",
-            "outfitId"
-          ],
+          "required": ["username", "outfitId"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
@@ -319,16 +274,10 @@
               "type": "string"
             },
             "playerAvatarType": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "thumbnailUrl": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "groups": {
               "type": "array",
@@ -359,37 +308,22 @@
                               "type": "string"
                             }
                           },
-                          "required": [
-                            "id",
-                            "name"
-                          ],
+                          "required": ["id", "name"],
                           "additionalProperties": false
                         },
                         "thumbnailUrl": {
-                          "type": [
-                            "string",
-                            "null"
-                          ]
+                          "type": ["string", "null"]
                         },
                         "catalogUrl": {
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "id",
-                        "name",
-                        "assetType",
-                        "thumbnailUrl",
-                        "catalogUrl"
-                      ],
+                      "required": ["id", "name", "assetType", "thumbnailUrl", "catalogUrl"],
                       "additionalProperties": false
                     }
                   }
                 },
-                "required": [
-                  "category",
-                  "items"
-                ],
+                "required": ["category", "items"],
                 "additionalProperties": false
               }
             }
@@ -424,9 +358,7 @@
               "description": "Roblox asset ID."
             }
           },
-          "required": [
-            "assetId"
-          ],
+          "required": ["assetId"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         },
@@ -443,28 +375,16 @@
                   "type": "string"
                 },
                 "assetTypeId": {
-                  "type": [
-                    "number",
-                    "null"
-                  ]
+                  "type": ["number", "null"]
                 },
                 "creatorName": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "created": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "thumbnailUrl": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
+                  "type": ["string", "null"]
                 },
                 "catalogUrl": {
                   "type": "string"
@@ -482,9 +402,7 @@
               "additionalProperties": false
             }
           },
-          "required": [
-            "item"
-          ],
+          "required": ["item"],
           "additionalProperties": false,
           "$schema": "http://json-schema.org/draft-07/schema#"
         }
