@@ -9,12 +9,14 @@ import { notFound } from "@tanstack/react-router";
 import {
   fetchAssetDetails,
   fetchAvatar,
+  fetchAvatar3d,
   fetchOutfitDetails,
   fetchOutfits,
   fetchThumbnails,
   fetchUserProfile,
   resolveUsername,
 } from "./roblox.server";
+import { resolveRbxCdnUrl } from "./rbx-cdn";
 import type { ItemDetail, OutfitDetail, RobloxOutfit, UserOverview } from "./roblox.types";
 
 const USERNAME_RE = /^[A-Za-z0-9_]{3,20}$/;
@@ -26,6 +28,18 @@ function parseUsername(data: unknown): { username: string } {
   }
   return { username };
 }
+
+/**
+ * Lightweight existence check used for live feedback while typing a
+ * username (distinct from getUserOverview, which fetches everything).
+ * Never throws on "not found" — that's a normal, expected result here.
+ */
+export const checkUsername = createServerFn({ method: "GET" })
+  .validator(parseUsername)
+  .handler(async ({ data }): Promise<{ exists: boolean; displayName: string | null }> => {
+    const base = await resolveUsername(data.username).catch(() => null);
+    return { exists: Boolean(base), displayName: base?.displayName ?? null };
+  });
 
 export const getUserOverview = createServerFn({ method: "GET" })
   .validator(parseUsername)
@@ -144,6 +158,32 @@ export const getOutfitDetail = createServerFn({ method: "GET" })
         assetType: a.assetType,
         thumbnailUrl: thumbs[`asset-${a.id}`] ?? null,
       })),
+    };
+  });
+
+export interface Avatar3dPayload {
+  objUrl: string;
+  mtlUrl: string;
+  textureUrls: string[];
+  camera: { position: { x: number; y: number; z: number }; fov: number };
+  aabb: { min: { x: number; y: number; z: number }; max: { x: number; y: number; z: number } };
+}
+
+export const getAvatar3d = createServerFn({ method: "GET" })
+  .validator(parseUsername)
+  .handler(async ({ data }): Promise<Avatar3dPayload | null> => {
+    const base = await resolveUsername(data.username);
+    if (!base) throw notFound();
+
+    const mesh = await fetchAvatar3d(base.id).catch(() => null);
+    if (!mesh) return null;
+
+    return {
+      objUrl: resolveRbxCdnUrl(mesh.obj),
+      mtlUrl: resolveRbxCdnUrl(mesh.mtl),
+      textureUrls: mesh.textures.map((hash) => resolveRbxCdnUrl(hash)),
+      camera: { position: mesh.camera.position, fov: mesh.camera.fov },
+      aabb: mesh.aabb,
     };
   });
 

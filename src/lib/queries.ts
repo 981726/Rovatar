@@ -1,5 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import {
+  getAvatar3d,
   getItemDetail,
   getOutfitDetail,
   getUserOutfits,
@@ -28,6 +29,14 @@ export const outfitDetailOptions = (username: string, outfitId: number) =>
     queryFn: () => getOutfitDetail({ data: { username, outfitId } }),
     staleTime: 60_000,
     retry: 1,
+  });
+
+export const avatar3dOptions = (username: string) =>
+  queryOptions({
+    queryKey: ["roblox", "user", username.trim().toLowerCase(), "avatar3d"],
+    queryFn: () => getAvatar3d({ data: { username } }),
+    staleTime: 300_000,
+    retry: 0,
   });
 
 export const itemDetailOptions = (assetId: number) =>
