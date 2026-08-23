@@ -1,0 +1,494 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.3",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "avatar-viewer-mcp",
+      "version": "0.1.0",
+      "title": "Avatar Viewer"
+    },
+    "tools": [
+      {
+        "name": "search_user",
+        "title": "Search Roblox user",
+        "description": "Resolve a Roblox username to the player's profile (user ID, display name, verified badge, join date).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 20,
+              "description": "Roblox username to look up."
+            }
+          },
+          "required": [
+            "username"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "user": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "hasVerifiedBadge": {
+                  "type": "boolean"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "created": {
+                  "type": "string"
+                },
+                "isBanned": {
+                  "type": "boolean"
+                },
+                "profileUrl": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "displayName",
+                "hasVerifiedBadge",
+                "description",
+                "created",
+                "isBanned",
+                "profileUrl"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "found"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
+      },
+      {
+        "name": "get_avatar",
+        "title": "Get current avatar",
+        "description": "Fetch a Roblox player's current avatar: body type (R6/R15) and every equipped item with thumbnails, grouped by category.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 20,
+              "description": "Roblox username."
+            }
+          },
+          "required": [
+            "username"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            },
+            "playerAvatarType": {
+              "type": "string"
+            },
+            "avatarThumbnailUrl": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "itemCount": {
+              "type": "number"
+            },
+            "groups": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "assetType": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "thumbnailUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "catalogUrl": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "assetType",
+                        "thumbnailUrl",
+                        "catalogUrl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "category",
+                  "items"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "username",
+            "playerAvatarType",
+            "avatarThumbnailUrl",
+            "itemCount",
+            "groups"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
+      },
+      {
+        "name": "get_outfits",
+        "title": "List saved outfits",
+        "description": "List a Roblox player's saved outfits with thumbnail images of the avatar wearing each one.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 20,
+              "description": "Roblox username."
+            }
+          },
+          "required": [
+            "username"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            },
+            "outfits": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "thumbnailUrl": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "thumbnailUrl"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "username",
+            "outfits"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
+      },
+      {
+        "name": "get_outfit",
+        "title": "Inspect an outfit",
+        "description": "Fetch every item in one of a Roblox player's saved outfits, grouped by category with thumbnails and catalog links.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 20,
+              "description": "Roblox username."
+            },
+            "outfitId": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "description": "Outfit ID from get_outfits."
+            }
+          },
+          "required": [
+            "username",
+            "outfitId"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            },
+            "outfitId": {
+              "type": "number"
+            },
+            "name": {
+              "type": "string"
+            },
+            "playerAvatarType": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "thumbnailUrl": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "groups": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "assetType": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "thumbnailUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "catalogUrl": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "assetType",
+                        "thumbnailUrl",
+                        "catalogUrl"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "category",
+                  "items"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "username",
+            "outfitId",
+            "name",
+            "playerAvatarType",
+            "thumbnailUrl",
+            "groups"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
+      },
+      {
+        "name": "get_item",
+        "title": "Get catalog item",
+        "description": "Look up a Roblox catalog item by asset ID: name, type, creator, thumbnail, and its catalog URL.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "assetId": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "description": "Roblox asset ID."
+            }
+          },
+          "required": [
+            "assetId"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "assetTypeId": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "creatorName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "created": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "thumbnailUrl": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "catalogUrl": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "assetTypeId",
+                "creatorName",
+                "created",
+                "thumbnailUrl",
+                "catalogUrl"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "item"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
+      }
+    ]
+  }
+}
